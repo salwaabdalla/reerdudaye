@@ -80,7 +80,7 @@ export default function CaseCard({ caseData, onVote, votedCases = new Set(), sho
 
       {showVoting && verdict === 'sugaya' && (
         <div className="voting-section">
-          <p className="voting-label">🗳️ Sawirkaaga:</p>
+          <p className="voting-label">🗳️ Fikirkaaga Kadhibo:</p>
           <div className="vote-buttons">
             <button
               className="btn btn-guilty"
