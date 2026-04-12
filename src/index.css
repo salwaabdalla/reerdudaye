@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #FFB6C1;
+  --pink-dark: #FF8FA3;
+  --pink-light: #FFD6DC;
+  --pink-pale: #FFF0F3;
+  --lavender: #C9B8E8;
+  --lavender-light: #EDE0FF;
+  --peach: #FFCBA4;
+  --peach-light: #FFF0E0;
+  --mint: #B5EAD7;
+  --mint-light: #E0FFF4;
+  --text: #5a3d5c;
+  --text-light: #9a7aa0;
+  --white: #fff;
+  --shadow: 0 4px 20px rgba(255,182,193,0.35);
+  --shadow-hover: 0 8px 30px rgba(255,143,163,0.45);
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(135deg, #fff0f3 0%, #ede0ff 50%, #e0fff4 100%);
+  min-height: 100vh;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  max-width: 100%;
+}
+
+h1, h2, h3 {
+  font-family: 'Pacifico', cursive;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--pink-pale); }
+::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 4px; }
+
+@keyframes bounce-in {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  20% { transform: translateX(-6px) rotate(-2deg); }
+  40% { transform: translateX(6px) rotate(2deg); }
+  60% { transform: translateX(-4px) rotate(-1deg); }
+  80% { transform: translateX(4px) rotate(1deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(255,182,193,0.5); }
+  50% { box-shadow: 0 0 25px rgba(255,182,193,0.9), 0 0 40px rgba(201,184,232,0.5); }
+}
+
+@keyframes fade-slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rainbow-text {
+  0% { color: #FF8FA3; }
+  25% { color: #C9B8E8; }
+  50% { color: #FFCBA4; }
+  75% { color: #B5EAD7; }
+  100% { color: #FF8FA3; }
+}
+
+@keyframes stamp {
+  0% { transform: scale(2) rotate(-15deg); opacity: 0; }
+  60% { transform: scale(0.9) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-5deg); opacity: 1; }
+}
+
+.bounce-in { animation: bounce-in 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+.fade-slide-up { animation: fade-slide-up 0.4s ease forwards; }
+.shake { animation: shake 0.5s ease; }
+.stamp { animation: stamp 0.6s cubic-bezier(.36,.07,.19,.97) both; }

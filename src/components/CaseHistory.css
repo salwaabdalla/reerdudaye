@@ -1,0 +1,52 @@
+.case-history { }
+
+.history-stats {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stat-box {
+  flex: 1;
+  text-align: center;
+  padding: 14px 10px;
+  border-radius: var(--radius-sm);
+  border: 2px solid;
+  box-shadow: var(--shadow);
+}
+
+.stat-total {
+  background: white;
+  border-color: var(--pink-light);
+}
+
+.stat-guilty {
+  background: #fff0f3;
+  border-color: #ffb3cb;
+}
+
+.stat-innocent {
+  background: var(--mint-light);
+  border-color: var(--mint);
+}
+
+.stat-num {
+  font-family: 'Pacifico', cursive;
+  font-size: 28px;
+  display: block;
+  color: var(--pink-dark);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-light);
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

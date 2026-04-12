@@ -1,0 +1,47 @@
+.header {
+  background: linear-gradient(135deg, #FFB6C1 0%, #C9B8E8 50%, #FFB6C1 100%);
+  text-align: center;
+  padding: 24px 16px 20px;
+  border-bottom: 3px solid rgba(255,255,255,0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='2' fill='rgba(255,255,255,0.3)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.header-sparkles {
+  font-size: 20px;
+  margin-bottom: 6px;
+  letter-spacing: 4px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.header-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(28px, 7vw, 48px);
+  color: white;
+  text-shadow: 3px 3px 0 rgba(180,80,120,0.3), 0 0 20px rgba(255,255,255,0.5);
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.header-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(13px, 3.5vw, 17px);
+  color: rgba(80, 40, 70, 0.85);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.header-decoration {
+  font-size: 18px;
+  letter-spacing: 6px;
+  opacity: 0.7;
+}

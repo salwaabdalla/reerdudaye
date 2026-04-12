@@ -1,0 +1,134 @@
+.hall-of-shame { }
+
+.shame-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  border: 2px solid var(--pink-light);
+  box-shadow: var(--shadow);
+  animation: fade-slide-up 0.4s ease forwards;
+  opacity: 0;
+  transition: transform 0.2s;
+}
+
+.leaderboard-row:hover {
+  transform: translateX(4px);
+}
+
+.top-shamer {
+  border-color: #ff6b9d;
+  background: linear-gradient(135deg, #fff0f3, #ffe0ea);
+  box-shadow: 0 4px 20px rgba(255,107,157,0.3);
+}
+
+.row-zero {
+  opacity: 0.6 !important;
+}
+
+.rank-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 44px;
+}
+
+.rank-emoji {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.rank-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-light);
+}
+
+.person-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.person-name {
+  font-family: 'Pacifico', cursive;
+  font-size: 17px;
+  color: var(--text);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.shame-msg {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.guilty-section {
+  text-align: right;
+  min-width: 80px;
+}
+
+.guilty-count {
+  font-family: 'Pacifico', cursive;
+  font-size: 26px;
+  color: #ff4d7f;
+  display: block;
+  line-height: 1;
+}
+
+.guilty-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-light);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.shame-bar {
+  width: 80px;
+  height: 6px;
+  background: var(--pink-pale);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.shame-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b9d, #ff4d7f);
+  border-radius: 3px;
+  transition: width 0.8s ease;
+}
+
+.shame-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--pink-pale);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text-light);
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+@media (max-width: 400px) {
+  .person-name { font-size: 15px; }
+  .guilty-count { font-size: 22px; }
+  .shame-bar { width: 60px; }
+}

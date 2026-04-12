@@ -1,0 +1,15 @@
+.active-cases { }
+
+.cases-count {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: var(--text-light);
+  font-weight: 700;
+}
+
+.cases-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

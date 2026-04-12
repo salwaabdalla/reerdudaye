@@ -1,0 +1,208 @@
+.case-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.case-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--pink), var(--lavender), var(--mint));
+}
+
+.case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.case-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.case-number {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-light);
+  background: var(--pink-pale);
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+
+.case-date {
+  font-size: 12px;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.case-accused {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  background: var(--pink-pale);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.accused-name {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--pink-dark);
+  font-family: 'Pacifico', cursive;
+}
+
+.case-crime {
+  margin-bottom: 10px;
+  padding: 10px 14px;
+  background: var(--lavender-light);
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--lavender);
+}
+
+.case-crime .label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.crime-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.case-prosecutor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+.prosecutor-name {
+  font-weight: 800;
+  color: #7a5fa0;
+}
+
+/* Voting */
+.voting-section {
+  border-top: 2px dashed var(--pink-light);
+  padding-top: 14px;
+  margin-top: 4px;
+}
+
+.voting-label {
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.vote-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.voted-msg {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a7a5e;
+  background: var(--mint-light);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* Vote bar */
+.vote-results {
+  margin-top: 12px;
+  border-top: 2px solid var(--pink-pale);
+  padding-top: 12px;
+}
+
+.vote-bar-wrap {
+  margin-bottom: 8px;
+}
+
+.vote-bar-inner {
+  display: flex;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--pink-pale);
+}
+
+.vote-bar-guilty {
+  background: linear-gradient(90deg, #ff6b9d, #ff4d7f);
+  transition: width 0.5s ease;
+  min-width: 2px;
+}
+
+.vote-bar-innocent {
+  background: linear-gradient(90deg, var(--mint), #7de8c0);
+  transition: width 0.5s ease;
+  min-width: 2px;
+}
+
+.vote-counts {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.count-guilty { color: #cc2255; }
+.count-innocent { color: #1a7a5e; }
+
+.total-votes {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+/* Verdict banner */
+.verdict-banner {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 900;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.verdict-guilty {
+  background: linear-gradient(135deg, #ffe0ea, #ffb3cb);
+  border: 2px solid #ff6b9d;
+  color: #8b0033;
+  transform: rotate(-1.5deg);
+}
+
+.verdict-innocent {
+  background: linear-gradient(135deg, var(--mint-light), var(--mint));
+  border: 2px solid #7de8c0;
+  color: #0d5c44;
+  transform: rotate(1deg);
+}
+
+@media (max-width: 400px) {
+  .vote-buttons { flex-direction: column; }
+}
