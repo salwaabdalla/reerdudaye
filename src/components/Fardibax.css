@@ -1,0 +1,66 @@
+.fardibax { }
+
+.vents-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.vent-form-wrap {
+  margin-bottom: 28px;
+}
+
+.vent-success {
+  background: linear-gradient(135deg, var(--lavender-light), var(--lavender));
+  border: 2px solid var(--lavender);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: 800;
+  color: #4a2d80;
+  font-size: 15px;
+}
+
+.vents-count {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-light);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.vents-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Reuse shared form + button styles from App.css / SubmitCase.css */
+.char-count {
+  text-align: right;
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.error-msg {
+  background: #ffe0ea;
+  border: 2px solid #ffb3cb;
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  color: #cc2255;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.submit-btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 16px;
+  padding: 13px;
+}

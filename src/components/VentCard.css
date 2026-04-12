@@ -1,0 +1,142 @@
+.vent-card {
+  background: white;
+  border-radius: var(--radius);
+  border: 2px solid var(--lavender-light);
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.vent-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--lavender), var(--peach), var(--mint));
+}
+
+.vent-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+
+.vent-author {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.author-avatar {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.author-name {
+  font-family: 'Pacifico', cursive;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.author-anon {
+  color: var(--text-light);
+  font-size: 13px;
+}
+
+.anon-tag {
+  background: var(--lavender-light);
+  color: #6b4fa0;
+  border: 1.5px solid var(--lavender);
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 9px;
+  letter-spacing: 0.4px;
+}
+
+.vent-time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-light);
+  white-space: nowrap;
+  gap: 1px;
+}
+
+.vent-content {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.65;
+  margin-bottom: 14px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Reactions */
+.vent-reactions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.react-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 13px;
+  border-radius: 50px;
+  border: 2px solid var(--pink-light);
+  background: var(--pink-pale);
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--text);
+  transition: transform 0.15s, background 0.15s, border-color 0.15s, box-shadow 0.15s;
+  position: relative;
+}
+
+.react-btn:hover:not(:disabled) {
+  transform: scale(1.12);
+  background: var(--lavender-light);
+  border-color: var(--lavender);
+  box-shadow: 0 3px 12px rgba(201,184,232,0.4);
+}
+
+.react-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.react-btn.reacted {
+  background: var(--lavender-light);
+  border-color: var(--lavender);
+  cursor: default;
+}
+
+.react-btn.loading {
+  opacity: 0.6;
+}
+
+.react-emoji {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.react-count {
+  font-size: 13px;
+  font-weight: 900;
+  color: #6b4fa0;
+}
+
+@media (max-width: 400px) {
+  .vent-card { padding: 14px 14px; }
+  .react-btn { padding: 5px 10px; }
+}

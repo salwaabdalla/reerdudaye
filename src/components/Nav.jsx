@@ -1,10 +1,11 @@
 import './Nav.css'
 
 const TABS = [
-  { id: 'active', label: '⚖️ Dacwaadaha', short: '⚖️ Dacwad' },
-  { id: 'submit', label: '📝 Gudbisoo', short: '📝 Gudbisoo' },
-  { id: 'shame', label: '💀 Kan u Ceeb Badan', short: '💀 Ceebta' },
-  { id: 'history', label: '📜 Taariikhda', short: '📜 Taariikh' },
+  { id: 'active',      label: '⚖️ Dacwaadaha',      short: '⚖️ Dacwad'   },
+  { id: 'submit',      label: '📝 Gudbisoo',         short: '📝 Gudbisoo' },
+  { id: 'fardibax',label: '💬 Fardibax',     short: '💬 Fardibax'   },
+  { id: 'shame',       label: '💀 Kan u Ceeb Badan', short: '💀 Ceebta'   },
+  { id: 'history',     label: '📜 Taariikhda',       short: '📜 Taariikh' },
 ]
 
 export default function Nav({ tab, setTab, activeCnt }) {
