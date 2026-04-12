@@ -8,17 +8,19 @@ export default function CaseHistory({ cases }) {
         <h2 className="section-title">📜 Taariikhda Dacwaadaha</h2>
         <div className="empty-state">
           <span className="emoji">📜</span>
-          <p>Ma jiraan dacwaado la xidhay weli!</p>
+          <p>Ma jiraan dacwaado weli!</p>
           <p style={{ fontSize: '14px', marginTop: '8px', color: 'var(--text-light)' }}>
-            Dacwaadaha xidhnaanayaan marka 3 cod ama ka badan la helo ⚖️
+            Dacwaadaha la gudbiyay halkan ayay ka muuqdaan ⚖️
           </p>
         </div>
       </div>
     )
   }
 
-  const guiltyCount = cases.filter(c => c.verdict === 'dembi-leh').length
+  const sorted       = [...cases].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+  const guiltyCount  = cases.filter(c => c.verdict === 'dembi-leh').length
   const innocentCount = cases.filter(c => c.verdict === 'dembi-maleh').length
+  const pendingCount = cases.filter(c => c.verdict === 'sugaya').length
 
   return (
     <div className="case-history fade-slide-up">
@@ -37,10 +39,14 @@ export default function CaseHistory({ cases }) {
           <span className="stat-num">{innocentCount}</span>
           <span className="stat-label">🟢 Xoroobay</span>
         </div>
+        <div className="stat-box stat-pending">
+          <span className="stat-num">{pendingCount}</span>
+          <span className="stat-label">⏳ Sugaya</span>
+        </div>
       </div>
 
       <div className="history-list">
-        {cases.map(c => (
+        {sorted.map(c => (
           <CaseCard key={c.id} caseData={c} onVote={() => {}} showVoting={false} />
         ))}
       </div>

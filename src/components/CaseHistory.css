@@ -2,8 +2,14 @@
 
 .history-stats {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 24px;
+}
+
+.history-stats .stat-box {
+  flex: 1 1 calc(50% - 10px);
+  min-width: 80px;
 }
 
 .stat-box {
@@ -28,6 +34,11 @@
 .stat-innocent {
   background: var(--mint-light);
   border-color: var(--mint);
+}
+
+.stat-pending {
+  background: var(--peach-light);
+  border-color: var(--peach);
 }
 
 .stat-num {

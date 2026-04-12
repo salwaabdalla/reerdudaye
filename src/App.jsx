@@ -182,7 +182,7 @@ export default function App() {
             {tab === 'submit'  && <SubmitCase onSubmit={addCase} totalCases={cases.length} />}
             {tab === 'active'  && <ActiveCases cases={activeCases} onVote={vote} votedCases={votedCases} />}
             {tab === 'shame'   && <HallOfShame cases={cases} />}
-            {tab === 'history' && <CaseHistory cases={closedCases} />}
+            {tab === 'history' && <CaseHistory cases={cases} />}
           </>
         )}
       </main>
