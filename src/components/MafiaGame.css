@@ -1,0 +1,903 @@
+/* ── Wrapper ──────────────────────────────────────────────── */
+.mafia-wrap {
+  min-height: calc(100vh - 120px);
+  transition: background 0.6s ease;
+}
+
+.mafia-wrap.is-night {
+  background: linear-gradient(160deg, #1a0a2e 0%, #2d1b4e 50%, #1e0f3a 100%);
+  border-radius: var(--radius);
+  padding-bottom: 20px;
+}
+
+.mafia-wrap.is-day {
+  background: transparent;
+}
+
+/* ── Top bar ──────────────────────────────────────────────── */
+.mafia-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  gap: 8px;
+  position: sticky;
+  top: 56px;
+  z-index: 10;
+  background: white;
+  border-bottom: 2px solid var(--pink-light);
+  box-shadow: 0 2px 8px rgba(255,182,193,0.2);
+}
+
+.is-night .mafia-topbar {
+  background: #2d1b4e;
+  border-bottom-color: rgba(201,184,232,0.3);
+}
+
+.mafia-back-btn {
+  background: var(--pink-pale);
+  border: 2px solid var(--pink-light);
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--pink-dark);
+  cursor: pointer;
+  transition: transform 0.15s;
+  white-space: nowrap;
+}
+
+.mafia-back-btn:hover { transform: translateX(-2px); }
+
+.is-night .mafia-back-btn {
+  background: rgba(255,182,193,0.1);
+  border-color: rgba(255,182,193,0.3);
+  color: #e8c0d0;
+}
+
+.mafia-phase-badge {
+  font-family: 'Pacifico', cursive;
+  font-size: 14px;
+  color: var(--text);
+  flex: 1;
+  text-align: center;
+}
+
+.is-night .mafia-phase-badge { color: #e8d0f0; }
+
+.mafia-reset-sm {
+  background: none;
+  border: 2px solid var(--pink-light);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.mafia-reset-sm:hover { transform: rotate(180deg); }
+
+/* ── Phase container ──────────────────────────────────────── */
+.mafia-phase {
+  padding: 20px 16px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mafia-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-light);
+  font-weight: 700;
+}
+
+.mafia-loading span {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+  animation: float 1.5s ease-in-out infinite;
+}
+
+/* ── Shared big button ────────────────────────────────────── */
+.mafia-big-btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 17px;
+  padding: 15px;
+  border-radius: 50px;
+}
+
+/* ── Role modal ───────────────────────────────────────────── */
+.role-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 5, 40, 0.75);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+  animation: fade-slide-up 0.3s ease both;
+}
+
+.role-modal-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  border: 3px solid;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+  animation: bounce-in 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.modal-mafia {
+  border-color: #ff4d7f;
+  background: linear-gradient(160deg, #fff0f3, #ffe0ea);
+}
+
+.modal-civilian {
+  border-color: var(--lavender);
+  background: linear-gradient(160deg, var(--lavender-light), white);
+}
+
+.modal-big-icon {
+  font-size: 4rem;
+  margin-bottom: 8px;
+  animation: float 2s ease-in-out infinite;
+}
+
+.modal-name {
+  font-family: 'Pacifico', cursive;
+  font-size: 24px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.modal-role-label {
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+
+.modal-mafia .modal-role-label { color: #cc2255; }
+.modal-civilian .modal-role-label { color: #5a3d8c; }
+
+.modal-desc {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: pre-wrap;
+  line-height: 1.7;
+  margin-bottom: 4px;
+}
+
+/* ── Lobby ────────────────────────────────────────────────── */
+.lobby-hero {
+  text-align: center;
+}
+
+.lobby-icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 8px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.lobby-hero h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 28px;
+  color: var(--pink-dark);
+  margin-bottom: 6px;
+}
+
+.lobby-sub {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.lobby-players {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.lobby-player-chip {
+  background: var(--pink-pale);
+  border: 2px solid var(--pink-light);
+  border-radius: 50px;
+  padding: 7px 16px;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.lobby-rules h3 {
+  font-family: 'Pacifico', cursive;
+  font-size: 16px;
+  color: var(--pink-dark);
+  margin-bottom: 10px;
+}
+
+.lobby-rules ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lobby-rules li {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ── Phase headers ────────────────────────────────────────── */
+.phase-header {
+  text-align: center;
+}
+
+.phase-header h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 22px;
+  color: var(--pink-dark);
+  margin-bottom: 6px;
+}
+
+.phase-header p {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+/* ── Role reveal grid ─────────────────────────────────────── */
+.reveal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.reveal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  border: 2px solid var(--pink-light);
+  border-radius: var(--radius-sm);
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Nunito', sans-serif;
+  box-shadow: var(--shadow);
+}
+
+.reveal-card:hover:not(.rv-locked) {
+  transform: translateY(-3px);
+  border-color: var(--pink-dark);
+}
+
+.rv-done {
+  border-color: var(--mint);
+  background: var(--mint-light);
+}
+
+.rv-me {
+  border-color: var(--pink-dark);
+  box-shadow: 0 0 0 3px rgba(255,143,163,0.3);
+}
+
+.rv-locked {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.rv-avatar { font-size: 22px; }
+
+.rv-name {
+  font-weight: 800;
+  font-size: 11px;
+  color: var(--text);
+  text-align: center;
+  word-break: break-word;
+}
+
+.rv-label {
+  font-size: 9px;
+  font-weight: 800;
+  color: #1a7a5e;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ── Reveal progress ──────────────────────────────────────── */
+.reveal-progress-wrap {
+  text-align: center;
+}
+
+.reveal-prog-bar {
+  height: 10px;
+  background: var(--pink-pale);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.reveal-prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pink-dark), var(--lavender));
+  border-radius: 5px;
+  transition: width 0.4s ease;
+}
+
+.reveal-prog-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+/* ── Night phase ──────────────────────────────────────────── */
+.night-center {
+  align-items: center;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.big-night-moon {
+  font-size: 5rem;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.night-center h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 22px;
+  color: #e8d0f0;
+  margin-top: 12px;
+}
+
+.night-center p { color: #c0a0d8; font-weight: 700; font-size: 15px; }
+
+.night-sub { color: #c0a0d8 !important; }
+
+.night-suspense-dots {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.night-suspense-dots span {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #c9b8e8;
+  animation: dot-pulse 1.2s ease-in-out infinite;
+}
+
+.night-suspense-dots span:nth-child(2) { animation-delay: 0.2s; }
+.night-suspense-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dot-pulse {
+  0%, 80%, 100% { transform: scale(1); opacity: 0.4; }
+  40% { transform: scale(1.4); opacity: 1; }
+}
+
+/* ── Mafia kill screen ────────────────────────────────────── */
+.night-mafia-screen {
+  align-items: center;
+  text-align: center;
+}
+
+.night-mafia-header { text-align: center; }
+
+.night-knife {
+  font-size: 3.5rem;
+  display: block;
+  animation: shake 1s ease 0.5s both;
+}
+
+.night-mafia-header h2 {
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  color: #ff8fa3;
+  margin: 8px 0 4px;
+}
+
+.night-mafia-header p { color: #c0a0d8; font-size: 14px; font-weight: 700; }
+
+.kill-targets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.kill-target-btn {
+  padding: 14px 20px;
+  border: 2px solid rgba(255,182,193,0.3);
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.07);
+  color: #e8d0f0;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.kill-target-btn:hover:not(:disabled) {
+  background: rgba(255,79,127,0.2);
+  border-color: #ff4d7f;
+  color: white;
+  transform: translateX(4px);
+}
+
+.kill-selected {
+  background: rgba(255,79,127,0.25) !important;
+  border-color: #ff4d7f !important;
+  color: white !important;
+  box-shadow: 0 0 16px rgba(255,79,127,0.4);
+}
+
+/* ── Day phase ────────────────────────────────────────────── */
+.night-result {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, #ffe0ea, #fff0f3);
+  border: 2px solid #ffb3cb;
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+}
+
+.nr-skull { font-size: 2.5rem; flex-shrink: 0; }
+
+.nr-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.nr-role {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-top: 3px;
+}
+
+/* Vote grid */
+.vote-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.vote-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 10px;
+  border: 2px solid var(--pink-light);
+  border-radius: var(--radius-sm);
+  background: white;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s;
+  box-shadow: var(--shadow);
+  position: relative;
+  min-height: 80px;
+  justify-content: center;
+}
+
+.vote-card:hover:not(.vc-disabled) {
+  border-color: var(--pink-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.vc-my-vote {
+  border-color: #ff6b9d !important;
+  background: linear-gradient(135deg, #fff0f3, #ffe0ea) !important;
+  box-shadow: 0 0 0 3px rgba(255,107,157,0.2) !important;
+}
+
+.vc-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.vc-name {
+  font-family: 'Pacifico', cursive;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.vc-tag {
+  font-size: 10px;
+  font-weight: 800;
+  background: var(--lavender-light);
+  color: #6b4fa0;
+  border-radius: 50px;
+  padding: 2px 8px;
+}
+
+.vc-tag-voted {
+  background: #ffe0ea;
+  color: #cc2255;
+}
+
+.vc-bar-wrap {
+  width: 100%;
+  height: 6px;
+  background: var(--pink-pale);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.vc-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6b9d, #ff4d7f);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+  min-width: 4px;
+}
+
+.vc-count {
+  font-size: 12px;
+  font-weight: 800;
+  color: #cc2255;
+}
+
+.vote-progress {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.spectator-note {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-light);
+  background: var(--pink-pale);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+}
+
+/* ── Game Over ────────────────────────────────────────────── */
+.gameover-phase {
+  padding-top: 12px;
+}
+
+.go-mafia {
+  background: linear-gradient(160deg, #fff0f3, #ffe0ea);
+  border-radius: var(--radius);
+  padding-bottom: 20px;
+}
+
+.go-civilians {
+  background: linear-gradient(160deg, var(--mint-light), var(--lavender-light));
+  border-radius: var(--radius);
+  padding-bottom: 20px;
+}
+
+.go-hero {
+  text-align: center;
+  padding: 24px 16px 16px;
+}
+
+.go-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 10px;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.go-title {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(18px, 5vw, 26px);
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.go-sub {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.go-roles h3,
+.go-log h3 {
+  font-family: 'Pacifico', cursive;
+  font-size: 16px;
+  color: var(--pink-dark);
+  margin-bottom: 12px;
+}
+
+.go-roles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.go-role-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 6px;
+  border-radius: var(--radius-sm);
+  border: 2px solid;
+  text-align: center;
+  position: relative;
+}
+
+.gr-mafia {
+  background: #ffe0ea;
+  border-color: #ffb3cb;
+}
+
+.gr-civilian {
+  background: var(--mint-light);
+  border-color: var(--mint);
+}
+
+.gr-dead {
+  opacity: 0.55;
+  filter: grayscale(0.4);
+}
+
+.gr-name {
+  font-weight: 900;
+  font-size: 11px;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.gr-label {
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+.gr-dead-mark {
+  font-size: 12px;
+  position: absolute;
+  top: -6px;
+  right: -4px;
+}
+
+/* ── Game log ─────────────────────────────────────────────── */
+.game-log {
+  margin: 0 16px 16px;
+}
+
+.game-log h3,
+.go-log h3 {
+  font-family: 'Pacifico', cursive;
+  font-size: 15px;
+  color: var(--pink-dark);
+  margin-bottom: 10px;
+}
+
+.gl-entries,
+.go-log {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.gl-entry,
+.go-log-entry {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--pink-pale);
+}
+
+.gl-round,
+.go-log-round {
+  background: var(--lavender-light);
+  color: #6b4fa0;
+  border-radius: 50px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.is-night .game-log {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(201,184,232,0.2);
+}
+
+.is-night .gl-entry { color: #d0b8e8; border-bottom-color: rgba(201,184,232,0.15); }
+.is-night .game-log h3 { color: #d0b8e8; }
+
+/* ── Dawn announcement ────────────────────────────────────── */
+.dawn-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: linear-gradient(160deg, #1a0520 0%, #3d0a2e 40%, #1a0520 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+  animation: fade-slide-up 0.4s ease both;
+}
+
+.dawn-inner {
+  text-align: center;
+  max-width: 380px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.dawn-eyes {
+  font-size: 3rem;
+  animation: bounce-in 0.5s cubic-bezier(.36,.07,.19,.97) 0.1s both;
+}
+
+.dawn-soo-kaca {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(28px, 9vw, 48px);
+  color: #ffb3cb;
+  text-shadow: 0 0 30px rgba(255,100,150,0.7), 0 0 60px rgba(255,100,150,0.4);
+  letter-spacing: 3px;
+  animation: dawn-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes dawn-pulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(255,100,150,0.6); }
+  50%       { text-shadow: 0 0 40px rgba(255,100,150,1), 0 0 80px rgba(255,100,150,0.5); }
+}
+
+.dawn-skull-wrap {
+  position: relative;
+}
+
+.dawn-skull {
+  font-size: clamp(4rem, 18vw, 6.5rem);
+  display: block;
+  animation: skull-drop 0.7s cubic-bezier(.36,.07,.19,.97) 0.3s both;
+  filter: drop-shadow(0 0 20px rgba(255,79,127,0.6));
+}
+
+@keyframes skull-drop {
+  0%   { transform: scale(0.3) rotate(-20deg); opacity: 0; }
+  60%  { transform: scale(1.15) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-3deg); opacity: 1; }
+}
+
+.dawn-name {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(32px, 10vw, 52px);
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255,180,200,0.8);
+  margin: 0;
+  animation: bounce-in 0.5s cubic-bezier(.36,.07,.19,.97) 0.5s both;
+}
+
+.dawn-message {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(18px, 5vw, 24px);
+  font-weight: 800;
+  color: #e8c0d0;
+  margin: 0;
+  animation: fade-slide-up 0.4s ease 0.7s both;
+}
+
+.dawn-role-reveal {
+  background: rgba(255,79,127,0.2);
+  border: 2px solid rgba(255,79,127,0.5);
+  border-radius: 50px;
+  padding: 8px 22px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: #ffb3cb;
+  animation: fade-slide-up 0.4s ease 0.85s both;
+}
+
+.dawn-sub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(200,160,190,0.7);
+  animation: fade-slide-up 0.4s ease 1s both;
+}
+
+.dawn-btn {
+  background: linear-gradient(135deg, #ff6b9d, #c9b8e8);
+  border: none;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-family: 'Pacifico', cursive;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(255,107,157,0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fade-slide-up 0.4s ease 1.15s both;
+  min-width: 200px;
+}
+
+.dawn-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(255,107,157,0.65);
+}
+
+.dawn-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Progress bar that drains over 6s */
+.dawn-bar-wrap {
+  width: 100%;
+  height: 5px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  animation: fade-slide-up 0.4s ease 1.2s both;
+}
+
+.dawn-bar-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #ff6b9d, #c9b8e8);
+  border-radius: 3px;
+  transform-origin: left;
+  animation: drain linear forwards;
+  animation-duration: inherit;
+}
+
+@keyframes drain {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .reveal-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+  }
+  .rv-avatar { font-size: 18px; }
+  .rv-name { font-size: 10px; }
+
+  .vote-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+  .go-roles-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .gr-name { font-size: 10px; }
+}
+
+@media (max-width: 360px) {
+  .reveal-grid { grid-template-columns: repeat(4, 1fr); gap: 5px; }
+  .reveal-card { padding: 8px 4px; }
+  .rv-name { font-size: 9px; }
+}

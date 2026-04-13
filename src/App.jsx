@@ -7,6 +7,7 @@ import ActiveCases from './components/ActiveCases'
 import HallOfShame from './components/HallOfShame'
 import CaseHistory from './components/CaseHistory'
 import Fardibax from './components/Fardibax'
+import CiyaarahaTab from './components/CiyaarahaTab'
 import SplashScreen from './components/SplashScreen'
 import './App.css'
 
@@ -182,7 +183,8 @@ export default function App() {
           <>
             {tab === 'submit'       && <SubmitCase onSubmit={addCase} totalCases={cases.length} />}
             {tab === 'active'       && <ActiveCases cases={activeCases} onVote={vote} votedCases={votedCases} />}
-            {tab === 'fardibax' && <Fardibax />}
+            {tab === 'fardibax'   && <Fardibax />}
+            {tab === 'ciyaaraha'  && <CiyaarahaTab />}
             {tab === 'shame'        && <HallOfShame cases={cases} />}
             {tab === 'history'      && <CaseHistory cases={cases} />}
           </>
